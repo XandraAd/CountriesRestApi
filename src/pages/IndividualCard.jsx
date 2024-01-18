@@ -156,11 +156,11 @@ const IndividualCard = ({ Countries}) => {
             <div className="grid grid-cols-4  sm:flex">
               {borderCountries?.map((border) => (
                 <Link
-                  to={`/country/${border?.name?.common}`}
-                  //to={`/country/${countryName?.name?.common}`}
+                 // to={`/country/${border?.name?.common}`}
+                 to={`/country/${border}`}
                   key={border?.name?.common}
                 >
-                  <button className="border-2 w-[100px] ">
+                  <button className="border-2 w-[100px] o ">
                     {border}
                    
                   </button>

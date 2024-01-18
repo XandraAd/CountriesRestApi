@@ -5,12 +5,13 @@ import { RiSearchLine } from "react-icons/ri";
 import IndividualCard from "../pages/IndividualCard";
 import { useNavigate } from "react-router-dom";
 
-const SearchInput = ({ Countries, isDarkMode ,filter}) => {
+const SearchInput = ({ Countries, isDarkMode ,filter,filterRegion}) => {
   const [query, setQuery] = useState("");
-  //const[selectedRegion,setSelectedRegion]=useState("")
+  
+  console.log('Props:', {filter, filterRegion });
   const [filteredCountries, setFilteredCountries] = useState("");
   const [selectedRegion,setSelectedRegion]= useState([])
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleSearch = (e) => {
     if (e.key === "Enter") {
@@ -23,21 +24,16 @@ const SearchInput = ({ Countries, isDarkMode ,filter}) => {
     }
   
   };
+
+
   const handleRegionSelection = (e) => {
-    const selectedRegion = e.target.value;
-    setSelectedRegion(selectedRegion);
+    const region = e.target.value;
+   setSelectedRegion(region);
   
     // Filter countries based on the selected region
-    const filtersByRegion = Countries?.filter((country) =>
-      selectedRegion === "" ? true : country?.region?.toLowerCase() === selectedRegion.toLowerCase()
-    );
-    
-    // Set the filtered countries in state
-    setFilteredCountries(filtersByRegion);
-  
-    // Call the filter function with the current search term and selected region
-    filter(query, selectedRegion);
+    filterRegion(region);
   };
+  
   
   
 
@@ -77,7 +73,7 @@ dark:bg-gray-900
       <div>
         <label htmlFor="country-select"></label>
         <div className={`mt-4 w-60 h-11 border-2  border-inherit ml-2 sm:px-0  flex place-items-center text-md justify-center  mx-2 md:-px-6 lg:-mx-[19px] ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-800`}>
-          <select name="country" id="country-select" className= {`w-60  mx-2 ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-700`}  onChange={handleRegionSelection}>
+          <select value={selectedRegion} onChange={handleRegionSelection} name="country" id="country-select" className= {`w-60  mx-2 ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-700`}  >
             <option value="">Filter by Region</option>
             <option value="Africa">Africa</option>
             <option value="America">America</option>
