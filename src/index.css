@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.img-sytle{
+    width: 100%;
+    height: 11rem;
+}
+
+
+.img-sytle1{
+    width: 1200px;
+    height: 400px;
+}
+
+.img-sytle2{
+    width: 280px;
+    height: 180px;
+}
+
+
+
+/* styles.css (or styles.scss) */
+
+.app-container {
+    transition: background-color 0.3s ease; /* Add a smooth transition for better user experience */
+  
+    /* Add your other styles here */
+  }
+  
+  .dark .app-container {
+    background-color: #000; /* Dark mode background color */
+    color: #fff; /* Adjust text color for better visibility in dark mode */
+  }
+
+  .dark:bg-black {
+    background-color: black;
+  }
+  
