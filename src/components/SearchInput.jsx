@@ -62,7 +62,7 @@ const SearchInput = ({ Countries,toggle, isDarkMode ,filter,handleFilterByRegion
    md:gap-[10rem]
    lg:gap-[29rem]
    lg:top-[6rem]
-   xl:gap-[88rem]
+   xl:gap-[58rem]
   bg-slate-150
    
 dark:bg-gray-900
@@ -91,7 +91,7 @@ dark:bg-gray-900
       </div>
       <div>
         <label htmlFor="country-select"></label>
-        <div className={`mt-4 w-60 h-11 border-2  border-inherit ml-2 sm:px-0  flex place-items-center text-md justify-center  mx-2 md:-px-6 lg:-mx-[19px] ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-800`}>
+        <div className={`mt-4 w-60 h-11 border-2  border-inherit ml-2 sm:px-0  flex place-items-center text-md justify-center  mx-2 md:-px-6 lg:-mx-[19px] ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-800  capitalise`}>
           <select 
           value={selectedRegion} 
           onChange={handleRegionSelection}
