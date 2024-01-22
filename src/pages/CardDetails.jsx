@@ -25,6 +25,9 @@ const CardDetails = ({ Countries,selectedRegion,Regions}) => {
     <>
       <div
         className={`
+        relative 
+        top-20
+
         pt-10 
         grid 
         grid-cols-1
@@ -33,7 +36,7 @@ const CardDetails = ({ Countries,selectedRegion,Regions}) => {
         h-full 
         pl-[5rem]
         
-        bg-slate-150
+        bg-slate-50
          dark:bg-gray-900 
          dark:text-white 
          shadow-xl
@@ -42,19 +45,22 @@ const CardDetails = ({ Countries,selectedRegion,Regions}) => {
        
         md:w-screen  
         md:grid-cols-2 
-        md:gap-12
+        md:gap-10
+        md:ml-0
+        md: pl-[3rem]
         lg:grid-cols-3
+        lg:top-24
         xl:grid-cols-4`}
       >
         {filteredCountries.map((country) => (
           <div
             key={country.name.common}
             className="
-              h-96
+              
                 dark:bg-gray-700 
                 rounded-lg
                 bg-white 
-                w-[90%]
+                w-[100%]
                 shadow-xl
                 place-item-center
                 
@@ -66,7 +72,7 @@ const CardDetails = ({ Countries,selectedRegion,Regions}) => {
                 <img src={country.flags.png} className="img-sytle rounded-t-lg" alt={`${country.name.common} Flag`} />
               </div>
 
-              <div className="m-[20px] ">
+              <div className="mx-[20px] ">
                 <h1 className="font-bold  text-2xl md:text-xl mb-4 sm:w-[60] ">
                   {country.name.common}
                 </h1>

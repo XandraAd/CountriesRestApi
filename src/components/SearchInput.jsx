@@ -47,17 +47,27 @@ const SearchInput = ({ Countries,toggle, isDarkMode ,filter,handleFilterByRegion
   
 
   return (
-    <div className={`flex  flex-wrap justify-between -gap-8 w-screen 
+    <div className={`flex 
+   relative 
+    top-20 
+    z-10 
+    flex-wrap 
+    justify-between 
+   
+    w-screen 
     md:grid
+
    md:grid-cols-2 
+   md:top-30
    md:gap-[10rem]
    lg:gap-[29rem]
-   xl:gap-[55rem]
+   lg:top-[6rem]
+   xl:gap-[88rem]
   bg-slate-150
    
 dark:bg-gray-900
       `}>
-      <div className="flex justify-between dark:text-white dark:bg-gray-700 h-[4rem] ">
+      <div className="flex justify-between dark:text-white dark:bg-gray-700 h-[5rem] ">
         <label htmlFor="searchInput" className="sr-only  ">
           Search for a country
         </label>
@@ -66,7 +76,9 @@ dark:bg-gray-900
             type="text"
             id="searchInput"
             placeholder="Search for a country"
-            className={`border rounded-md p-2 pl-10 w-[22rem] md:w-[19rem] lg:w-[28rem] mx-2 ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-700 `}
+            className={`border rounded-md p-2 pl-10 w-[22rem] md:w-[19rem] lg:w-[28rem] mx-2
+             ${isDarkMode ? 'text-white' : 'text-black'} 
+             dark:bg-gray-700 `}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleSearch}
