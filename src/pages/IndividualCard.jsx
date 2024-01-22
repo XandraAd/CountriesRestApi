@@ -64,10 +64,10 @@ const IndividualCard = ({ Countries,isDarkMode,toggleDarkMode}) => {
        <div className={`    h-screen 
        w-screen 
        
-       bg-slate-50
+       bg-slate-100
        dark:bg-gray-700  
        relative
-       top-20 ${isDarkModeLocal ? "bg-gray-800" :"bg.slate-50"} `}
+       top-20 ${isDarkModeLocal ? "bg-gray-800" :"bg.slate-100"} `}
       
    >
       <div className={`${isDarkModeLocal ? 'bg-gray-800 ' : 'bg-white'} `}>
@@ -78,7 +78,7 @@ const IndividualCard = ({ Countries,isDarkMode,toggleDarkMode}) => {
       </div>
       <div className="relative py-4  ml-4   ">
         
-      <div className={`border-2 py-2  w-24 shadow-lg my-4 mx-2 lg:py-4 border-2 lg:m-6 lg:w-40  lg:mt-[4rem] ${isDarkModeLocal ? 'bg-gray-800 text-white' : 'bg-slate-50'} hover:bg-slate-600`}>
+      <div className={`border-2 py-2  w-24 shadow-lg my-4 mx-2 lg:py-4 border-2 lg:m-6 lg:w-40  lg:mt-[4rem] ${isDarkModeLocal ? 'bg-gray-800 text-white' : 'bg-slate-100'} hover:bg-slate-600`}>
           <Link to={"/"}>
             <MdKeyboardBackspace
              style={{ fontSize: "26px"}} 
@@ -90,7 +90,7 @@ const IndividualCard = ({ Countries,isDarkMode,toggleDarkMode}) => {
       {/* Display additional details about the selected country */}
       <div className={`
       p-10 
-      bg-slate-50
+      bg-slate-100
       md:px-8
       lg:p-0 
       
@@ -99,7 +99,7 @@ const IndividualCard = ({ Countries,isDarkMode,toggleDarkMode}) => {
       lg:h-[50%]
       
      
-      ${isDarkModeLocal ? 'bg-gray-800 text-white' : 'bg-slate-50'} `}>
+      ${isDarkModeLocal ? 'bg-gray-800 text-white' : 'bg-slate-100'} `}>
           <div className={`
           rounded-md
            w-[100%]
@@ -117,7 +117,7 @@ const IndividualCard = ({ Countries,isDarkMode,toggleDarkMode}) => {
             
             
             
-            ${isDarkModeLocal ? 'bg-gray-800' : 'bg-slate-50'}`}>
+            ${isDarkModeLocal ? 'bg-gray-800' : 'bg-slate-100'}`}>
             
           <img
             src={countryData.flags.svg}
@@ -126,6 +126,7 @@ const IndividualCard = ({ Countries,isDarkMode,toggleDarkMode}) => {
             md:w-[42rem]
              md:h-[25rem] 
              img-style1 
+            
              lg:w-[25rem]
              lg:h-[25rem] 
              lg:mt-[4rem]
@@ -140,7 +141,7 @@ const IndividualCard = ({ Countries,isDarkMode,toggleDarkMode}) => {
         </div>
 
         <div className="lg:pl-[1rem] ">
-          <h1 className="font-bold mt-[4rem] text-3xl md:text-4xl mb-6 md:mt-[2rem] lg:mt-[8rem] " >{name?.common}
+          <h1 className="font-bold mt-[9rem] text-3xl md:text-4xl  mb-6 md:mt-[2rem] lg:mt-[8rem] " >{name?.common}
           </h1>
 
           <div className="text-xl leading-8 
