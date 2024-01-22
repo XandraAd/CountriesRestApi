@@ -13,6 +13,10 @@
     height: 400px;
 }
 
+.borderR {
+  border-radius: 10px;
+}
+
 .img-sytle2{
     width: 280px;
     height: 180px;

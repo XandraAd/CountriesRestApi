@@ -3,15 +3,16 @@
 import React, { useState,useEffect } from "react";
 import { RiSearchLine } from "react-icons/ri";
 import IndividualCard from "../pages/IndividualCard";
-import { useNavigate } from "react-router-dom";
 
-const SearchInput = ({ Countries, isDarkMode ,filter,filterRegion}) => {
+
+const SearchInput = ({ Countries,toggle, isDarkMode ,filter,handleFilterByRegion,Regions }) => {
   const [query, setQuery] = useState("");
   
-  console.log('Props:', {filter, filterRegion });
-  const [filteredCountries, setFilteredCountries] = useState("");
-  const [selectedRegion,setSelectedRegion]= useState([])
-  //const navigate = useNavigate();
+  //console.log('Props:', {filter, filterRegion });
+  //const [filteredCountries,setFilteredCountries] = useState([]);
+  const [selectedRegion,setSelectedRegion]= useState("")
+  const [countryData, setCountryData] = useState([]);
+  
 
   const handleSearch = (e) => {
     if (e.key === "Enter") {
@@ -28,12 +29,18 @@ const SearchInput = ({ Countries, isDarkMode ,filter,filterRegion}) => {
 
   const handleRegionSelection = (e) => {
     const region = e.target.value;
+    console.log("Selected Region:", region);
    setSelectedRegion(region);
   
     // Filter countries based on the selected region
-    filterRegion(region);
+    handleFilterByRegion(region);
   };
-  
+
+  useEffect(() => {
+    // Update filteredCountries when Countries changes
+    setCountryData(Countries);
+  }, [Countries]);
+
   
   
 
@@ -73,22 +80,35 @@ dark:bg-gray-900
       <div>
         <label htmlFor="country-select"></label>
         <div className={`mt-4 w-60 h-11 border-2  border-inherit ml-2 sm:px-0  flex place-items-center text-md justify-center  mx-2 md:-px-6 lg:-mx-[19px] ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-800`}>
-          <select value={selectedRegion} onChange={handleRegionSelection} name="country" id="country-select" className= {`w-60  mx-2 ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-700`}  >
+          <select 
+          value={selectedRegion} 
+          onChange={handleRegionSelection}
+          name="region" 
+          id="country-select" 
+          className= {`w-60  mx-2 ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-700`}  >
             <option value="">Filter by Region</option>
-            <option value="Africa">Africa</option>
-            <option value="America">America</option>
-            <option value="Asia">Asia</option>
-            <option value="Europe">Europe</option>
-            <option value="Oceania">Oceania</option>
-          </select>
-        </div>
-      </div>
-      {/* Render CountryCard component with filtered countries */}
-      {filteredCountries?.length > 0 &&
-        filteredCountries?.map((country) => (
-          <IndividualCard key={country.name.common} country={country} />
-        ))}
-    </div>
+            {Regions.map((region) => (
+              <option key={region} value={region}>
+                  {region}
+                  </option>
+                   ))}
+                    </select>
+                    </div>
+                    </div>
+          
+           
+     {/* Render CountryCard component with filtered countries */}
+{Countries?.length > 0 &&
+  Countries?.map((country) => (
+    <IndividualCard key={country.name.common} country={country} toggle={toggle}  isDarkMode={isDarkMode}/>
+  ))}
+  </div>
+
+         
+
+        
+    
+    
   );
 };
 

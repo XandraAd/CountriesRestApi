@@ -6,26 +6,16 @@ import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import { MdKeyboardBackspace } from "react-icons/md";
 
-const IndividualCard = ({ Countries}) => {
-  
+const IndividualCard = ({ Countries,isDarkMode,toggleDarkMode}) => {
   const { countryName } = useParams();
-  console.log('Params:', useParams());
-
+  const [countryData, setCountryData] = useState(null);
+  const [isDarkModeLocal, setIsDarkModeLocal] = useState(false);
  
 
-  console.log("Countries in IndividualCard:", Countries);
-  console.log("Country Name in IndividualCard:", countryName);
-  const [countryData, setCountryData] = useState(null);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    // You can add logic to update your global dark mode state or save it to local storage
-    // if you want to persist the user's choice across page reloads.
-  };
-  console.log('IndividualCard Rendered. Dark Mode:', isDarkMode);
 
   useEffect(() => {
+    console.log("isDarkMode:", isDarkMode);
+    console.log("isDarkModLocale:", isDarkModeLocal);
     const fetchCountryData = () => {
       // Find the country object in the data array based on the countryName
       const selectedCountry = Countries?.find(
@@ -35,16 +25,17 @@ const IndividualCard = ({ Countries}) => {
 
       // Set the found country data in the state
       setCountryData(selectedCountry);
+     
     };
 
     fetchCountryData();
-  }, [Countries, countryName]);
+  }, [Countries, countryName,isDarkMode,isDarkModeLocal]);
 
   // Check if countryData is still loading
   if (!countryData) {
     return <div>Loading...</div>;
   }
-
+ 
   const {
     name,
     population,
@@ -70,13 +61,18 @@ const IndividualCard = ({ Countries}) => {
 
   return (
     <>
-       <div className={`h-screen ${isDarkMode ? 'dark' : ''} bg-slate-50 flex flex-col`}>
-      <div className={`border-2 border-yellow-100 px-2 ${isDarkMode ? 'dark:border-gray-800' : ''}`}>
-        <NavBar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+       <div className="h-screen w-screen lg:bg-slate-50 bg-slate-150
+   
+   dark:bg-gray-900  relative">
+      <div className={`border-2 border-yellow-100  ${isDarkModeLocal ? 'dark:border-gray-800' : 'bg-white'}`}>
+        <NavBar 
+        className="w-[80%] md:w-screen"
+        toggleDarkMode={() => setIsDarkModeLocal((prevMode) => !prevMode)}
+         isDarkMode={isDarkMode} />
       </div>
-      <div className="mx-2 relative flex-grow">
+      <div className="relative">
         
-      <div className={`border-2 py-2 my-2 w-20 shadow-lg ${isDarkMode ? 'dark:border-gray-800' : ''}`}>
+      <div className={`border-2 py-2  w-20 shadow-lg my-4 mx-2 ${isDarkMode ? 'dark:border-gray-800' : ''}`}>
           <Link to={"/"}>
             <MdKeyboardBackspace
               style={{ fontSize: "24px"}}
@@ -85,35 +81,56 @@ const IndividualCard = ({ Countries}) => {
             </Link>
           </div>
        
-        {/* Display additional details about the selected country */}
+        
       </div>
-      <div className={`rounded-t-lg bg-white shadow-lg mx-6 flex-grow ${isDarkMode ? 'dark:bg-gray-800' : ''}`}>
-
-        <div className={`w-full border-2 mx-0 border-red-500 md:flex md:self-center md:h-[50%] ${isDarkMode ? 'dark:border-gray-800' : ''}`}>
+      {/* Display additional details about the selected country */}
+      <div className={`px-10 bg-white md:px-40 lg:px-2 lg:grid lg:grid-cols-2 ${isDarkModeLocal ? 'dark:bg-gray-900' : 'bg-slate-150'} border-2`}>
+          <div className={`rounded-md w-[100%] h-[11rem] mx-0 md:flex md:self-center md:h-[50%] lg:w-[90%] lg:h-[100%] lg:mt-14 lg:border-2 ${isDarkModeLocal ? 'dark:border-gray-800' : ''}`}>
+            
           <img
             src={countryData.flags.svg}
-            className="img-sytle md:img-style1    md:w-full"
+            className="lg:w-[385px] lg:h-[376px] img-style1 borderR rounded-lg "
             alt={`Flag of ${name?.common}`}
           />
         </div>
 
-        <div className="mx-4 ">
-          <h1 className="font-bold mt-10 text-4xl mb-6">{name?.common}</h1>
+        <div className="bg-inherit lg:-ml-8">
+          <h1 className="font-bold mt-[4rem] text-4xl mb-6 md:mt-[2rem] ">{name?.common}
+          </h1>
 
-          <div className="grid lg:grid lg:grid-cols-2  leadind-8">
+          <div className="md:h-[10rem] leadind-8 border-2 border-red-500 md:flex md:flex-col md:flex-wrap">
             <p className="font-bold">
               Native Name:
               <span className="font-normal ml-2">{name?.common}</span>{" "}
             </p>
-
-            <p className="font-bold">
-              Top Level Domain: <span className="font-normal">{tld}</span>
-            </p>
-
-            <p className="font-bold">
+            <p className="font-bold  md-left-[10rem] md-top-[10rem] ">
               Population:
               <span className="font-normal ml-2">{population}</span>{" "}
             </p>
+            <div >
+            <p className="font-bold">
+              Region:
+              <span className="font-normal ml-2">{region}</span>{" "}
+            </p>
+            <p className="font-bold">
+            Sub Region:
+            <span className="font-normal ml-2">{subregion}</span>{" "}
+          </p>
+
+          <p className="font-bold ">
+            Capital:
+            <span className="font-normal"> {capital}</span>
+          </p>
+            </div>
+           
+
+
+<div className=""  >
+<p className="font-bold mt-6 sm:mt-0 ">
+              Top Level Domain: <span className="font-normal ">{tld}</span>
+            </p>
+
+            
 
             <p className="font-bold  lg:w-[15rem] ">
               Currencies:
@@ -122,7 +139,7 @@ const IndividualCard = ({ Countries}) => {
                   {" "}
                   {currencies[currencyCode].name} (
                   {currencies[currencyCode].symbol})
-                  {/* Add a comma and space after each currency, if it's not the last one */}
+                  
                   {currencyCode !==
                     Object.keys(currencies)[
                       Object.keys(currencies).length - 1
@@ -131,36 +148,29 @@ const IndividualCard = ({ Countries}) => {
               ))}
             </p>
 
-            <p className="font-bold">
-              Region:
-              <span className="font-normal ml-2">{region}</span>{" "}
-            </p>
-            <p className="font-bold w-[24rem]">
+            <p className="font-bold  flex ">
               Languages:
-              <span className="font-normal ml-2">
+              <span className="font-normal ml-2 grid h-12 ">
                 {Object.values(languages).join(", ")}
               </span>{" "}
             </p>
-          </div>
-          <p className="font-bold">
-            Sub Region:
-            <span className="font-normal ml-2">{subregion}</span>{" "}
-          </p>
-          <p className="font-bold">
-            Capital:
-            <span className="font-normal"> {capital}</span>
-          </p>
+</div>
 
-          <div className="py-[1.5rem] lg:flex ">
-            <p className="font-bold w-[200px] md:w-[150px]  ">Border Countries:</p>
-            <div className="grid grid-cols-4  sm:flex">
-              {borderCountries?.map((border) => (
+            
+          </div>
+          
+          
+
+          <div className="py-[1.5rem] md:mt-4  md:pt-0  lg:flex ">
+            <p className="font-bold w-[150px] md:w-[450px]  lg:w-[340px] border-green-200  border-2">Border Countries:</p>
+            <div className="lg:flex lg:flex-row lg:flex-wrap lg:space-x-2  ">
+              {borderCountries?.map((border,index) => (
                 <Link
-                 // to={`/country/${border?.name?.common}`}
-                 to={`/country/${border}`}
-                  key={border?.name?.common}
+                  to={`/country/${border}`}
+                 
+                  key={index}
                 >
-                  <button className="border-2 w-[100px] o ">
+                  <button className="border-2 w-[100px] lg:w-[120px] mr-2 mb-2  ">
                     {border}
                    
                   </button>

@@ -3,11 +3,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CardDetails = ({ Countries,selectedRegion}) => {
+
+const CardDetails = ({ Countries,selectedRegion,Regions}) => {
    // Filter countries based on the selected region
-   const filteredCountries = selectedRegion?.length > 0
+   const filteredCountries = selectedRegion.length > 0
    ? Countries.filter((country) => selectedRegion.includes(country.region.toLowerCase()))
    : Countries;
+
+   console.log("Selected Region in CardDetails:", selectedRegion);
+   console.log("Filtered Countries in CardDetails:", filteredCountries);
+   
+   
+   console.log("Regions in CardDetails:", Regions)
+
+
 
 
 
@@ -86,6 +95,8 @@ const CardDetails = ({ Countries,selectedRegion}) => {
           </div>
         ))}
       </div>
+      
+      
     </>
     );
   };
