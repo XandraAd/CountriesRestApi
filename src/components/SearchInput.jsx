@@ -97,7 +97,7 @@ dark:bg-gray-900
           onChange={handleRegionSelection}
           name="region" 
           id="country-select" 
-          className= {`w-60  mx-2 ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-700`}  >
+          className= {`w-60  mx-2 ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-700 capitalise `}  >
             <option value="">Filter by Region</option>
             {Regions.map((region) => (
               <option key={region} value={region}>
