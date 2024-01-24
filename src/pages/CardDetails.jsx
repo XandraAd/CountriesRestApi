@@ -21,7 +21,7 @@ const CardDetails = ({ Countries, selectedRegion,filteredCountries }) => {
   return (
     <>
       <div
-        className={`relative top-20 pt-10  px-[2rem] flex flex-wrap gap-12 min-h-screen
+        className={`relative top-20 pt-10  px-[2rem] flex flex-wrap gap-12 min-h-screen w-screen
         pl-[2rem] bg-slate-50 dark:bg-gray-900 dark:text-white shadow-xl md:grid
         md:grid-cols-2 md:px-[3rem] md:ml-0  lg:grid-cols-3 lg:top-24
         xl:grid-cols-4 2xl:grid-cols-6 xl:last:pr-0 place-content-center last:pr-4 `}
