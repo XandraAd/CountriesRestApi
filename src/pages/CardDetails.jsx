@@ -13,10 +13,10 @@ const CardDetails = ({ Countries, selectedRegion,filteredCountries }) => {
         selectedRegion.includes(country.region.toLowerCase())
       ) // Display data based on selected region
     : Countries; // Display the whole data if no search term or region is specified
-// Display the whole data if no search term or region is specified
 
-  console.log("Selected Region in CardDetails:", selectedRegion);
-  console.log("Filtered Countries in CardDetails:", displayData);
+
+ // console.log("Selected Region in CardDetails:", selectedRegion);
+  //console.log("Filtered Countries in CardDetails:", displayData);
 
   return (
     <>

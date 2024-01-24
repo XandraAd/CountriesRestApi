@@ -44,11 +44,7 @@ const NavBar = ({ toggle, toggleDarkMode, isDarkMode }) => {
           >
            
            <h1 className="font-bold cursor-pointer">Where in the world?</h1>
-           
-        
-       
-            
-            <div className="flex items-center ml-[2rem] md:mr-10 lg:mr-12 xl:mr-3 2xl:xl:mr-14 hover:bg-slate-600 ">
+           <div className="flex items-center ml-[2rem] md:mr-10 lg:mr-12 xl:mr-3 2xl:xl:mr-14 hover:bg-slate-600 ">
               {isDarkMode ? (
                 <>
                   <HiOutlineMoon
@@ -69,7 +65,7 @@ const NavBar = ({ toggle, toggleDarkMode, isDarkMode }) => {
                       isDarkMode ? "text-white" : "text-black"
                     }`}
                   />
-                  <span className="p-2">
+                  <span className="p-2 cursor-pointer">
                     {isDarkMode ? "Light Mode" : "Dark Mode"}
                   </span>
                 </>
