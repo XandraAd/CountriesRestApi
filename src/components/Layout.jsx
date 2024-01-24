@@ -9,7 +9,7 @@ const Layout = ({ isDarkMode, toggleDarkMode, children }) => {
 
     
         return (
-          <div className={` ${isDarkMode ? "dark" : "bg-slate-150"} `}>
+          <div className={`${isDarkMode ? "dark" : "bg-slate-150"} `}>
             <NavBar toggle={toggleDarkMode} isDarkMode={isDarkMode} />
             {children}
           </div>

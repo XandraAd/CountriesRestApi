@@ -3,73 +3,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const CardDetails = ({ Countries, selectedRegion,filteredCountries }) => {
+  // Determine the data to display based on conditions
+  const displayData =
+  filteredCountries?.length > 0
+    ? filteredCountries // Display filtered countries if available
+    : selectedRegion?.length > 0
+    ? Countries.filter((country) =>
+        selectedRegion.includes(country.region.toLowerCase())
+      ) // Display data based on selected region
+    : Countries; // Display the whole data if no search term or region is specified
+// Display the whole data if no search term or region is specified
 
-const CardDetails = ({ Countries,selectedRegion,Regions}) => {
-   // Filter countries based on the selected region
-   const filteredCountries = selectedRegion.length > 0
-   ? Countries.filter((country) => selectedRegion.includes(country.region.toLowerCase()))
-   : Countries;
-
-   console.log("Selected Region in CardDetails:", selectedRegion);
-   console.log("Filtered Countries in CardDetails:", filteredCountries);
-   
-   
-   console.log("Regions in CardDetails:", Regions)
-
-
-
-
-
+  console.log("Selected Region in CardDetails:", selectedRegion);
+  console.log("Filtered Countries in CardDetails:", displayData);
 
   return (
     <>
       <div
-        className={`
-        relative 
-        top-20
-
-        pt-10 
-        grid 
-        grid-cols-1
-       px-[2rem]
-        gap-12
-        h-full 
-        pl-[5rem]
-        
-        bg-slate-50
-         dark:bg-gray-900 
-         dark:text-white 
-         shadow-xl
-       
-         
-       
-        md:w-screen  
-        md:grid-cols-2 
-        md:gap-10
-        md:ml-0
-        md: pl-[3rem]
-        lg:grid-cols-3
-        lg:top-24
-        xl:grid-cols-4`}
+        className={` relative top-20 pt-10 grid grid-cols-1 px-[2rem] gap-12 h-full
+        pl-[2rem] bg-slate-50 dark:bg-gray-900 dark:text-white shadow-xl 
+        md:grid-cols-2 md:px-[3rem] md:ml-0  lg:grid-cols-3 lg:top-24
+        xl:grid-cols-4 2xl:grid-cols-6 xl:last:pr-0`}
       >
-        {filteredCountries.map((country) => (
+        {displayData.map((country) => (
           <div
             key={country.name.common}
-            className="
-              
-                dark:bg-gray-700 
-                rounded-lg
-                bg-white 
-                w-[100%]
-                shadow-xl
-                place-item-center
-                
-                 
-                "
+            className=" dark:bg-gray-700 rounded-lg bg-white w-[100%] shadow-xl "
           >
-            <Link to={`/country/${country.name.common}`} key={country.name.common}>
+            <Link
+              to={`/country/${country.name.common}`}
+              key={country.name.common}
+            >
               <div className="w-[100%] h-[12rem] ">
-                <img src={country.flags.png} className="img-sytle rounded-t-lg" alt={`${country.name.common} Flag`} />
+                <img
+                  src={country.flags.png}
+                  className="img-sytle rounded-t-lg"
+                  alt={`${country.name.common} Flag`}
+                />
               </div>
 
               <div className="mx-[20px] ">
@@ -101,13 +72,8 @@ const CardDetails = ({ Countries,selectedRegion,Regions}) => {
           </div>
         ))}
       </div>
-      
-      
     </>
-    );
-  };
+  );
+};
 
 export default CardDetails;
-
-
-

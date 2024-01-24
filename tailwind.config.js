@@ -9,8 +9,10 @@ export default {
     extend: {
       backgroundColor: ['dark'],
       textColor: ['dark'],
+       
       
     },
+    
   },
   plugins: [],
 }

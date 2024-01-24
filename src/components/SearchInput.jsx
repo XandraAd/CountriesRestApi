@@ -1,127 +1,133 @@
 /* eslint-disable react/prop-types */
+
 /* eslint-disable no-unused-vars */
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { RiSearchLine } from "react-icons/ri";
 import IndividualCard from "../pages/IndividualCard";
 
-
-const SearchInput = ({ Countries,toggle, isDarkMode ,filter,handleFilterByRegion,Regions }) => {
+const SearchInput = ({
+  Countries,
+  toggle,
+  isDarkMode,
+  filter,
+  handleFilterByRegion,
+  Regions,
+  handleSearch,
+}) => {
   const [query, setQuery] = useState("");
-  
-  //console.log('Props:', {filter, filterRegion });
-  //const [filteredCountries,setFilteredCountries] = useState([]);
-  const [selectedRegion,setSelectedRegion]= useState("")
-  const [countryData, setCountryData] = useState([]);
-  
+  const [selectedRegion, setSelectedRegion] = useState("");
+  const [filteredCountries, setFilteredCountries] = useState([]);
 
-  const handleSearch = (e) => {
-    if (e.key === "Enter") {
-      const searchName = e.target.value.toLowerCase();
-      setQuery(searchName);
-
-      // Call the filter function with search term and selected region
-      filter(searchName, selectedRegion);
-     
-    }
-  
+  const handleChange = (e) => {
+    const searchName = e.target.value.trim().toLowerCase();
+    setQuery(searchName);
+  // Call the filter function with search term and selected region
+    filter(searchName);
+  // Call the searchCountries function to update the filtered countries based on the search term
+    handleSearch(searchName);
   };
-
+  
 
   const handleRegionSelection = (e) => {
     const region = e.target.value;
-    console.log("Selected Region:", region);
-   setSelectedRegion(region);
-  
+   // console.log("Selected Region:", region);
+    setSelectedRegion(region);
     // Filter countries based on the selected region
     handleFilterByRegion(region);
   };
 
   useEffect(() => {
-    // Update filteredCountries when Countries changes
-    setCountryData(Countries);
-  }, [Countries]);
-
-  
-  
-
-  
+    if (Countries !== filteredCountries) {
+      setFilteredCountries(Countries);
+    }
+  }, [Countries, query, filteredCountries, handleSearch]);
 
   return (
-    <div className={`flex 
-   relative 
-    top-20 
-    z-10 
-    flex-wrap 
-    justify-between 
+    <div
+      className={`flex 
+      relative 
+       top-20 
+       z-10 
+       flex-wrap 
+       justify-around 
+      w-screen 
+       md:grid
    
-    w-screen 
-    md:grid
-
-   md:grid-cols-2 
-   md:top-30
-   md:gap-[10rem]
-   lg:gap-[29rem]
-   lg:top-[6rem]
-   xl:gap-[58rem]
-   2xl:gap-[88rem]
-  bg-slate-150
-   
-dark:bg-gray-900
-      `}>
-      <div className="flex justify-between dark:text-white dark:bg-gray-700 h-[5rem] ">
+      md:grid-cols-2 
+      md:pt-8
+      md:gap-[10rem]
+      lg:gap-[29rem]
+      lg:top-[6rem]
+      xl:gap-[48rem]
+      2xl:gap-[88rem]
+     bg-slate-150
+      
+   dark:bg-gray-900`}
+    >
+      <div className="flex justify-between dark:text-white dark:bg-gray-700 ">
         <label htmlFor="searchInput" className="sr-only  ">
           Search for a country
         </label>
-        <div className="relative py-2 sm:py-4 sm:px-2 sm:px-6  md:px-10 dark:bg-gray-900">
+        <div className="relative py-2  md:px-10 dark:bg-gray-900">
           <input
             type="text"
             id="searchInput"
             placeholder="Search for a country"
             className={`border rounded-md p-2 pl-10 w-[22rem] md:w-[19rem] lg:w-[28rem] mx-2
-             ${isDarkMode ? 'text-white' : 'text-black'} 
+             ${isDarkMode ? "text-white" : "text-black"} 
              dark:bg-gray-700 `}
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={handleSearch}
+            onChange={handleChange}
+            //onKeyDown={handleSearch}
           />
-
-          <span className={`absolute left-4 sm:left-12  md:left-14 top-6 sm:top-8  ${isDarkMode ? 'text-white' : 'text-black'}`}>
-            <RiSearchLine  className={`${isDarkMode ? 'text-white' : 'text-black'}`}/>
+          <span
+            className={`absolute left-4   md:left-16 top-6 md:top-6  ${
+              isDarkMode ? "text-white" : "text-black"
+            }`}
+          >
+            <RiSearchLine
+              className={`${isDarkMode ? "text-white" : "text-black"}`}
+            />
           </span>
         </div>
       </div>
       <div>
         <label htmlFor="country-select"></label>
-        <div className={`mt-4 w-60 h-11 border-2  border-inherit ml-2 sm:px-0  flex place-items-center text-md justify-center  mx-2 md:-px-6 lg:-mx-[19px] ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-800  capitalise`}>
-          <select 
-          value={selectedRegion} 
-          onChange={handleRegionSelection}
-          name="region" 
-          id="country-select" 
-          className= {`w-60  mx-2 ${isDarkMode ? 'text-white' : 'text-black'} dark:bg-gray-700 capitalise `}  >
-            <option value="">Filter by Region</option>
+        <div
+          className={`mt-4 mx-2 w-60 h-12 border-2 -ml-24 md:ml-4  flex place-items-center text-md justify-center  md:-px-6 lg:-mx-[19px] ${
+            isDarkMode ? "text-white" : "text-black"
+          } dark:bg-gray-800 `}
+        >
+          <select
+            value={selectedRegion}
+            onChange={handleRegionSelection}
+            name="region"
+            id="country-select"
+            className={`w-60  mx-2  ${
+              isDarkMode ? "text-white" : "text-black"
+            } dark:bg-gray-700 capitalize `}
+          >
+            <option value="" className="capitalize" >Filter by Region</option>
             {Regions.map((region) => (
               <option key={region} value={region}>
-                  {region}
-                  </option>
-                   ))}
-                    </select>
-                    </div>
-                    </div>
-          
-           
-     {/* Render CountryCard component with filtered countries */}
-{Countries?.length > 0 &&
-  Countries?.map((country) => (
-    <IndividualCard key={country.name.common} country={country} toggle={toggle}  isDarkMode={isDarkMode}/>
-  ))}
-  </div>
+                {region}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
 
-         
-
-        
-    
-    
+      {/* Render CountryCard component with filtered countries */}
+      {filteredCountries?.length > 0 &&
+        filteredCountries?.map((country) => (
+          <IndividualCard
+            key={country.name.common}
+            country={country}
+            toggle={toggle}
+            isDarkMode={isDarkMode}
+          />
+        ))}
+    </div>
   );
 };
 
