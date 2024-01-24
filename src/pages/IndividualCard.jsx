@@ -108,7 +108,7 @@ const IndividualCard = ({ Countries, isDarkMode }) => {
             </h1>
 
             <div
-              className="text-xl leading-8  md:text-2xl md:h-full  md:w-full md:flex md:flex-col md:flex-wrap lg:space-x-2 lg:text-lg xl:w-full  lg:-ml-[1rem] lg:mt-[7rem] lg:h-[12rem] lg:grid lg:grid-cols-2 "
+              className="text-xl leading-8  md:text-2xl md:h-full  md:w-full md:flex md:flex-col md:flex-wrap lg:space-x-2 lg:text-lg xl:w-full  lg:-ml-[1rem] lg:mt-[7rem] lg:h-[12rem] lg:grid lg:grid-cols-2  2xl:grid-cols-3"
             >
               <div className="lg:-mt-[5.5rem] lg:mr-4">
                 <p className="font-bold lg:w-[20rem]">
@@ -167,14 +167,14 @@ const IndividualCard = ({ Countries, isDarkMode }) => {
               </div>
             </div>
 
-            <div className="py-[1.5rem] w-full text-xl md:text-2xl md:mt-4  md:pt-0  lg:flex lg:flex-row  lg:mt-0 lg:text-xl xl:-mt-[4rem]">
-              <p className="font-bold w-[180px] mb-2 md:w-[450px] lg:w-[70px] xl:w-[200px] lg:mr-4 xl:flex xl:space-x-8">
+            <div className="py-[1.5rem] w-full text-xl md:text-2xl md:mt-4  md:pt-0  lg:flex lg:flex-row  lg:mt-0 lg:text-xl xl:-mt-[4rem] lg:grid">
+              <p className="font-bold w-[180px] mb-2 md:w-[450px] lg:w-[400px]  lg:mr-4 ">
                 Border Countries:
               </p>
-              <div className="lg:ml-2 ">
+              <div className="lg:py-2 ">
                 {borderCountries?.map((border, index) => (
-                  <Link to={`/country/${border}`} key={index}>
-                    <button className="border-2 w-[150px] lg:w-[120px] mr-2  mb-2 lg:mr-0 hover:bg-slate-600">
+                  <Link to={`/country/${border}`} key={index} className="" >
+                    <button className="border-2 w-[150px] lg:w-[140px] mr-4  mb-2 lg:mr-2 hover:bg-slate-600 ">
                       {border}
                     </button>
                   </Link>
