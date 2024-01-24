@@ -25,7 +25,7 @@ const NavBar = ({ toggle, toggleDarkMode, isDarkMode }) => {
   return (
     <>
     <div
-            className={`flex justify-around items-center fixed top-0 z-40 w-screen
+            className={`flex justify-around items-center fixed top-0 z-40 w-full
            h-[5rem]   
            ${isDarkMode ? "bg-gray-700 text-white" : " bg-white"} 
            shadow-lg

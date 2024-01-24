@@ -44,36 +44,32 @@ const SearchInput = ({
 
   return (
     <div
-      className={`flex 
+      className={`flex  flex-wrap
       relative 
        top-20 
        z-10 
-       flex-wrap 
        justify-around 
-      w-screen 
+      w-full
        md:grid
-   
-      md:grid-cols-2 
+       md:grid-cols-2 
       md:pt-8
       md:gap-[10rem]
       lg:gap-[29rem]
       lg:top-[6rem]
-      xl:gap-[58rem]
+      xl:gap-[48rem]
       2xl:gap-[88rem]
-
-     bg-slate-150
-      
-   dark:bg-gray-900
-   dark:text-white`}
+      bg-slate-150
+      dark:bg-gray-900
+      dark:text-white`}
     >
       <div
-       className="flex justify-between dark:text-white dark:bg-gray-700 "
+       className="flex justify-evenly dark:text-white dark:bg-gray-700 "
      
       >
-        <label htmlFor="searchInput" className="sr-only  ">
+        <label htmlFor="searchInput" className="sr-only ">
           Search for a country
         </label>
-        <div className="relative py-2  md:px-10 dark:bg-gray-900">
+        <div className="relative py-2  md:px-10 md:ml-[6rem] lg:ml-[17rem] xl:pl-[4.5rem] dark:bg-gray-900">
           <input
             type="text"
             id="searchInput"
@@ -83,10 +79,10 @@ const SearchInput = ({
              dark:bg-gray-700  dark:text-white`}
             value={query}
             onChange={handleChange}
-            //onKeyDown={handleSearch}
+            
           />
           <span
-            className={`absolute left-4   md:left-16 top-6 md:top-6  ${
+            className={`absolute left-4   md:left-24 top-6 md:top-6  ${
               isDarkMode ? "text-white" : "text-black"
             }`}
           >
@@ -99,14 +95,14 @@ const SearchInput = ({
       <div>
         <label htmlFor="country-select"></label>
         <div
-          className={`mt-4 mx-2 w-60 h-12 border-2 -ml-24 md:ml-4  flex text-md   md:-px-6 lg:-mx-[19px] dark:bg-gray-700`}
+          className={`mt-4 mb-2 w-60 h-12 border-2 -ml-24 md:ml-4  flex text-md md:-px-6 lg:-mx-[19px] dark:bg-gray-700`}
         >
           <select
             value={selectedRegion}
             onChange={handleRegionSelection}
             name="region"
             id="country-select"
-            className={`w-60  mx-2   dark:text-white dark:bg-gray-700 capitalize `}
+            className={`w-60 mx-2 dark:text-white dark:bg-gray-700 capitalize `}
           >
             <option value="" className="capitalize" >Filter by Region</option>
             {Regions.map((region) => (
