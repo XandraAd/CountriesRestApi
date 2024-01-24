@@ -58,8 +58,8 @@ const SearchInput = ({
       md:gap-[10rem]
       lg:gap-[29rem]
       lg:top-[6rem]
-      xl:gap-[48rem]
-      2xl:gap-[88rem]
+      xl:gap-[58rem]
+      2xl:gap-[128rem]
      bg-slate-150
       
    dark:bg-gray-900

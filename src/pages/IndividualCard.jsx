@@ -9,7 +9,7 @@ import { MdKeyboardBackspace } from "react-icons/md";
 const IndividualCard = ({ Countries, isDarkMode }) => {
   const { countryName } = useParams();
   const [countryData, setCountryData] = useState(null);
-  const [isDarkModeLocal, setIsDarkModeLocal] = useState(false);
+  const [isDarkModeLocal, setIsDarkModeLocal] = useState(isDarkMode);
 
   useEffect(() => {
     const fetchCountryData = () => {
@@ -55,7 +55,7 @@ const IndividualCard = ({ Countries, isDarkMode }) => {
   return (
     <>
       <div
-        className={`h-full w-full relative top-20 ${
+        className={`min-h-screen w-full relative top-20 ${
           isDarkModeLocal ? "bg-gray-800" : "bg-slate-100"
         } `}
       >

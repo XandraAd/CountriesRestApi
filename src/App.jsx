@@ -128,7 +128,7 @@ function App() {
         }
       />
 
-      <Route
+<Route
         path="/country/:countryName"
         element={
           <IndividualCard
@@ -138,6 +138,8 @@ function App() {
           />
         }
       />
+
+     
     </Routes>
   );
 }
