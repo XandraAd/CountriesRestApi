@@ -85,7 +85,7 @@ const IndividualCard = ({ Countries, isDarkMode }) => {
         </div>
         {/* Display additional details about the selected country */}
         <div
-          className={`p-10 md:px-8  lg:grid lg:grid-cols-2 lg:h-[50%]  
+          className={`p-10 pt-32 md:px-8  lg:grid lg:grid-cols-2 lg:h-[150%]  
                    ${
                      isDarkModeLocal ? "bg-gray-800 text-white " : "bg-slate-100"
                    } `}
