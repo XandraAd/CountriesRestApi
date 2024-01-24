@@ -62,9 +62,13 @@ const SearchInput = ({
       2xl:gap-[88rem]
      bg-slate-150
       
-   dark:bg-gray-900`}
+   dark:bg-gray-900
+   dark:text-white`}
     >
-      <div className="flex justify-between dark:text-white dark:bg-gray-700 ">
+      <div
+       className="flex justify-between dark:text-white dark:bg-gray-700 "
+     
+      >
         <label htmlFor="searchInput" className="sr-only  ">
           Search for a country
         </label>
@@ -74,8 +78,8 @@ const SearchInput = ({
             id="searchInput"
             placeholder="Search for a country"
             className={`border rounded-md p-2 pl-10 w-[22rem] md:w-[19rem] lg:w-[28rem] mx-2
-             ${isDarkMode ? "text-white" : "text-black"} 
-             dark:bg-gray-700 `}
+            
+             dark:bg-gray-700  dark:text-white`}
             value={query}
             onChange={handleChange}
             //onKeyDown={handleSearch}
@@ -86,7 +90,7 @@ const SearchInput = ({
             }`}
           >
             <RiSearchLine
-              className={`${isDarkMode ? "text-white" : "text-black"}`}
+              className={`dark:bg-gray-700  dark:text-white`}
             />
           </span>
         </div>
@@ -94,18 +98,14 @@ const SearchInput = ({
       <div>
         <label htmlFor="country-select"></label>
         <div
-          className={`mt-4 mx-2 w-60 h-12 border-2 -ml-24 md:ml-4  flex place-items-center text-md justify-center  md:-px-6 lg:-mx-[19px] ${
-            isDarkMode ? "text-white" : "text-black"
-          } dark:bg-gray-800 `}
+          className={`mt-4 mx-2 w-60 h-12 border-2 -ml-24 md:ml-4  flex text-md   md:-px-6 lg:-mx-[19px] dark:bg-gray-700`}
         >
           <select
             value={selectedRegion}
             onChange={handleRegionSelection}
             name="region"
             id="country-select"
-            className={`w-60  mx-2  ${
-              isDarkMode ? "text-white" : "text-black"
-            } dark:bg-gray-700 capitalize `}
+            className={`w-60  mx-2   dark:text-white dark:bg-gray-700 capitalize `}
           >
             <option value="" className="capitalize" >Filter by Region</option>
             {Regions.map((region) => (

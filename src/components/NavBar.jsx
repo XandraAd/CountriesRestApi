@@ -6,6 +6,8 @@ import { MdOutlineLightMode } from "react-icons/md";
 
 
 const NavBar = ({ toggle, toggleDarkMode, isDarkMode }) => {
+
+
   const handleToggleClick = () => {
     if (toggle) {
       toggle();
@@ -14,6 +16,8 @@ const NavBar = ({ toggle, toggleDarkMode, isDarkMode }) => {
       toggleDarkMode();
     }
   };
+
+  
 
   useEffect(() => {
     //console.log("isDarkMode in NavBar:", isDarkMode);
@@ -39,7 +43,9 @@ const NavBar = ({ toggle, toggleDarkMode, isDarkMode }) => {
            `}
           >
            
-          <h1 className="font-bold cursor-pointer">Where in the world?</h1>
+           <h1 className="font-bold cursor-pointer">Where in the world?</h1>
+           
+        
        
             
             <div className="flex items-center ml-[2rem] md:mr-10 lg:mr-12 xl:mr-3 2xl:xl:mr-14 hover:bg-slate-600 ">

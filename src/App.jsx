@@ -21,7 +21,7 @@ function App() {
   };
 
   const filterCountries = (searchTerm, regions) => {
-    console.log("Filtering countries...", searchTerm, regions);
+    //console.log("Filtering countries...", searchTerm, regions);
     const searchName = searchTerm.toLowerCase();
   
     const nameFilter = data?.filter((country) =>

@@ -117,7 +117,7 @@ const IndividualCard = ({ Countries, isDarkMode }) => {
                 </p>
                 <p className="font-bold  md-left-[10rem] md-top-[10rem] lg:w-[1rem] ">
                   Population:
-                  <span className="font-normal ml-2 ">{population}</span>{" "}
+                  <span className="font-normal ml-2 ">{new Intl.NumberFormat().format(population)}</span>{" "}
                 </p>
                 <div>
                   <p className="font-bold">

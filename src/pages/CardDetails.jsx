@@ -21,15 +21,15 @@ const CardDetails = ({ Countries, selectedRegion,filteredCountries }) => {
   return (
     <>
       <div
-        className={` relative top-20 pt-10 grid grid-cols-1 px-[2rem] gap-12 h-full
-        pl-[2rem] bg-slate-50 dark:bg-gray-900 dark:text-white shadow-xl 
+        className={`relative top-20 pt-10  px-[2rem] gap-12 h-full
+        pl-[2rem] bg-slate-50 dark:bg-gray-900 dark:text-white shadow-xl md:grid
         md:grid-cols-2 md:px-[3rem] md:ml-0  lg:grid-cols-3 lg:top-24
-        xl:grid-cols-4 2xl:grid-cols-6 xl:last:pr-0`}
+        xl:grid-cols-4 2xl:grid-cols-6 xl:last:pr-0 place-content-center last:pr-4 `}
       >
         {displayData.map((country) => (
           <div
             key={country.name.common}
-            className=" dark:bg-gray-700 rounded-lg bg-white w-[100%] shadow-xl "
+            className=" dark:bg-gray-700 rounded-lg bg-white w-[90%] shadow-xl hover:w-[95%] "
           >
             <Link
               to={`/country/${country.name.common}`}
@@ -44,23 +44,23 @@ const CardDetails = ({ Countries, selectedRegion,filteredCountries }) => {
               </div>
 
               <div className="mx-[20px] ">
-                <h1 className="font-bold  text-2xl md:text-xl mb-4 sm:w-[60] ">
-                  {country.name.common}
+                <h1 className="font-bold h-10 text-2xl md:text-xl mb-6 ">
+                 {country.name.common}
                 </h1>
                 <p className="font-bold">
                   Population:
-                  <span className="font-normal dark:text-slate-50 ml-2">
-                    {country.population}
+                  <span className="font-normal dark:text-slate-100 ml-2">
+                  {new Intl.NumberFormat().format(country.population)}
                   </span>{" "}
                 </p>
                 <p className="font-bold">
                   Region:
-                  <span className="font-normal md:font-normal ml-2">
+                  <span className="font-normal ml-2">
                     {" "}
                     {country.region}
                   </span>{" "}
                 </p>
-                <p className="font-bold">
+                <p className="font-bold mb-6">
                   Capital:
                   <span className="font-normal ml-2">
                     {" "}
