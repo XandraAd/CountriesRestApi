@@ -3,7 +3,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CardDetails = ({ Countries, selectedRegion,filteredCountries }) => {
+const CountryDetails = ({ Countries, selectedRegion,filteredCountries }) => {
   // Determine the data to display based on conditions
   const displayData =
   filteredCountries?.length > 0
@@ -77,4 +77,4 @@ const CardDetails = ({ Countries, selectedRegion,filteredCountries }) => {
   );
 };
 
-export default CardDetails;
+export default CountryDetails;

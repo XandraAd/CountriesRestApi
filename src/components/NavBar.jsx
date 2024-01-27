@@ -1,27 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+import React from "react";
 import { HiOutlineMoon } from "react-icons/hi2";
 import { MdOutlineLightMode } from "react-icons/md";
 
 
-const NavBar = ({ toggle, toggleDarkMode, isDarkMode }) => {
+const NavBar = ({ toggle, isDarkMode }) => {
 
-
-  const handleToggleClick = () => {
-    if (toggle) {
-      toggle();
-    }
-    if (toggleDarkMode) {
-      toggleDarkMode();
-    }
-  };
-
-  
-
-  useEffect(() => {
+ //useEffect(() => {
     //console.log("isDarkMode in NavBar:", isDarkMode);
-  }, [isDarkMode]);
+ // }, [isDarkMode]);
   return (
     <>
     <div
@@ -37,9 +25,6 @@ const NavBar = ({ toggle, toggleDarkMode, isDarkMode }) => {
            
            xl:pr-[2rem]
            2xl:pr-0
-           
-          
-            
            `}
           >
            
@@ -48,7 +33,7 @@ const NavBar = ({ toggle, toggleDarkMode, isDarkMode }) => {
               {isDarkMode ? (
                 <>
                   <HiOutlineMoon
-                    onClick={handleToggleClick}
+                    onClick={toggle}
                     className={`cursor-pointer ${
                       isDarkMode ? "text-white" : "text-black"
                     }`}
@@ -60,7 +45,7 @@ const NavBar = ({ toggle, toggleDarkMode, isDarkMode }) => {
               ) : (
                 <>
                   <MdOutlineLightMode
-                    onClick={handleToggleClick}
+                    onClick={toggle}
                     className={`cursor-pointer  ${
                       isDarkMode ? "text-white" : "text-black"
                     }`}

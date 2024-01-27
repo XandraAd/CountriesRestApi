@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./components/Layout";
 import SearchInput from "./components/SearchInput";
-import CardDetails from "./pages/CardDetails";
-import IndividualCard from "./pages/IndividualCard";
+import CountryDetails from "./components/CountryDetails";
+import IndividualCountry from "./pages/IndividualCountry";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -23,33 +23,29 @@ function App() {
   const filterCountries = (searchTerm, regions) => {
     //console.log("Filtering countries...", searchTerm, regions);
     const searchName = searchTerm.toLowerCase();
-  
+
     const nameFilter = data?.filter((country) =>
       country.name.common.toLowerCase().includes(searchName)
     );
-  
+
     const regionFilter = data?.filter(
       (country) =>
         regions?.length === 0 || regions?.includes(country.region.toLowerCase())
     );
-  
+
     const filters = searchTerm
       ? nameFilter
       : regions?.length > 0
       ? regionFilter
       : "";
-  
+
     setFilteredCountries(filters);
     setSelectedRegion(regions);
-  
-    if (filters.length === 1) {
-      navigate(`/country/${filters[0].name.common}`);
-    }
-   
-  };
-  
 
-  
+    // if (filters.length === 1) {
+    //   navigate(`/country/${filters[0].name.common}`);
+    // }
+  };
 
   const handleSearch = (countryName) => {
     const trimmedSearch = countryName.trim().toLowerCase();
@@ -98,6 +94,7 @@ function App() {
 
     fetchData();
   }, [setData, setRegions, setError]);
+  ///console.log(data)
 
   return (
     <Routes>
@@ -114,32 +111,29 @@ function App() {
               handleFilterByRegion={handleFilterByRegion}
               handleSearch={handleSearch}
             />
-          
-            <CardDetails
+
+            <CountryDetails
               filteredCountries={filteredCountries}
               Countries={data}
               //Regions={regions}
               selectedRegion={selectedRegion}
               toggle={toggleDarkMode}
             />
-           
-           
           </Layout>
         }
       />
 
-<Route
+      <Route
         path="/country/:countryName"
         element={
-          <IndividualCard
+          <IndividualCountry
             Countries={data}
             toggle={toggleDarkMode}
             isDarkMode={isDarkMode}
+
           />
         }
       />
-
-     
     </Routes>
   );
 }

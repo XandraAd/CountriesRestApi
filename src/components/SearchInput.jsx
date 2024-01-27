@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { RiSearchLine } from "react-icons/ri";
-import IndividualCard from "../pages/IndividualCard";
+import IndividualCard from "../pages/IndividualCountry";
 
 const SearchInput = ({
   Countries,
@@ -21,16 +21,15 @@ const SearchInput = ({
   const handleChange = (e) => {
     const searchName = e.target.value.trim().toLowerCase();
     setQuery(searchName);
-  // Call the filter function with search term and selected region
+    // Call the filter function with search term and selected region
     filter(searchName);
-  // Call the searchCountries function to update the filtered countries based on the search term
+    // Call the searchCountries function to update the filtered countries based on the search term
     handleSearch(searchName);
   };
-  
 
   const handleRegionSelection = (e) => {
     const region = e.target.value;
-   // console.log("Selected Region:", region);
+    // console.log("Selected Region:", region);
     setSelectedRegion(region);
     // Filter countries based on the selected region
     handleFilterByRegion(region);
@@ -49,7 +48,7 @@ const SearchInput = ({
        top-20 
        z-10 
        justify-around 
-      w-full
+      min-w-screen
        md:grid
        md:grid-cols-2 
       md:pt-8
@@ -62,10 +61,7 @@ const SearchInput = ({
       dark:bg-gray-900
       dark:text-white`}
     >
-      <div
-       className="flex justify-evenly dark:text-white dark:bg-gray-700 "
-     
-      >
+      <div className="flex justify-evenly dark:text-white dark:bg-gray-700 ">
         <label htmlFor="searchInput" className="sr-only ">
           Search for a country
         </label>
@@ -79,16 +75,13 @@ const SearchInput = ({
              dark:bg-gray-700  dark:text-white`}
             value={query}
             onChange={handleChange}
-            
           />
           <span
-            className={`absolute left-4   md:left-24 top-6 md:top-6  ${
+            className={`absolute left-4   md:left-16  lg:left-18  xl:left-24 top-6 md:top-6  ${
               isDarkMode ? "text-white" : "text-black"
             }`}
           >
-            <RiSearchLine
-              className={`dark:bg-gray-700  dark:text-white`}
-            />
+            <RiSearchLine className={`dark:bg-gray-700  dark:text-white`} />
           </span>
         </div>
       </div>
@@ -104,7 +97,9 @@ const SearchInput = ({
             id="country-select"
             className={`w-60 mx-2 dark:text-white dark:bg-gray-700 capitalize `}
           >
-            <option value="" className="capitalize" >Filter by Region</option>
+            <option value="" className="capitalize">
+              Filter by Region
+            </option>
             {Regions.map((region) => (
               <option key={region} value={region}>
                 {region}
